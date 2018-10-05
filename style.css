@@ -1,6 +1,11 @@
 body {
   margin: 0;
   display: flex;
-  justify-content: left;
-  padding-left: 50px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /*centers sketch vertically*/
+  align-items: center;
+  /*flex-grow, flex-shrink, flex not used*/
+  align-content: space-around;
 }

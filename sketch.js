@@ -1,16 +1,39 @@
-function setup() {
-    var canvasWidth = windowWidth * 0.95;
-    var canvasHeight = windowHeight * 0.95;
-    coreSketch = select('#coreSketch');
-    var canvas = createCanvas(canvasWidth, canvasHeight);
-    canvas.parent(coreSketch);
-    cursor(CROSS);
+var coreSketch;
 
-}
+var sketch = function(p) {
+    var cnv;
+    var cnvWidth;
+    var cnvHeight;
 
-function draw() {
+    function centerCanvas() {
+        var x = (windowWidth - width) / 2;
+        var y = (windowWidth - height) / 2;
+        cnv.position(x, y);
+    }
 
-}
+    function setup() {
+        cnvWidth = windowWidth * 0.96;
+        cnvHeight = windowHeight * 0.96;
+        cnv = createCanvas(cnvWidth, cnvHeight);
+        centerCanvas();
+        cnv.style('display', 'block'); // to prevent scrollbars
+        cnv.parent(coreSketch);
+        cursor(CROSS);
+    }
 
-function mousePressed() {
-}
+    function draw() {
+
+    }
+
+    function windowResized() {
+      resizeCanvas(cnvWidth, cnvHeight);
+      centerCanvas();
+    }
+
+    function mousePressed() {
+    }
+};
+
+// testing out instance containers (https://p5js.org/examples/instance-mode-instance-container.html)
+coreSketch = window.document.getElementById('#coreSketch');
+new p5(sketch, coreSketch);
